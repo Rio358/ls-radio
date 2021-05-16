@@ -53,4 +53,18 @@ $(function() {
 
         }));
     });
+    $("#volup").submit(function(e) {
+        e.preventDefault(); // Prevent form from submitting
+
+        $.post('http://ls-radio/volup', JSON.stringify({
+
+        }));
+    });
+    $("#voldown").submit(function(e) {
+        e.preventDefault(); // Prevent form from submitting
+
+        $.post('http://ls-radio/voldown', JSON.stringify({
+
+        }));
+    });
 });
