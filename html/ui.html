@@ -10,19 +10,31 @@
     <div id="radio">
       <img src="./img/radio.png" alt="">
 
-      <div id="onoff">
-       <form id="onoff">
-         <button id="onoff" type="submit" name="onoff"></button>
+      <div id="volup">
+       <form id="volup">
+         <button id="volup" type="submit" name="volup"></button>
 
        </form>
       </div>
+      <div id="voldown">
+        <form id="voldown">
+          <button id="voldown" type="submit" name="voldown"></button>
+ 
+        </form>
+       </div>
+       <div id="onoff">
+        <form id="onoff">
+          <button id="onoff" type="submit" name="onoff"></button>
+ 
+        </form>
+       </div>
       <div class="ekran">
         <div class="channel">
           <br />
-          <br /><span> Kanał:</span>
+          <br /><span> Channel:</span>
           <form id="login-form">
-          <input id="channel" type="number" name="channel" value="channel" min="1" max="100" placeholder="1-100"><br />
-          <button id="submit" type="submit" name="channel">zmien</button>
+          <input id="channel" type="number" name="channel" value="channel" min="1" max="1000" step = "0.01" placeholder="1000" style="width: 70%"><br />
+          <button id="submit" type="submit" name="channel">join</button>
         </form>
         </div>
       </div>
