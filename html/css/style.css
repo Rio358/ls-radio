@@ -45,6 +45,35 @@ body {
  opacity: .0;
 }
 
+#volup {
+  position: absolute;
+  top: 31%;
+  right: 63px;
+  padding: 25px 25px;
+  opacity: .0;
+}
+
+.volup button {
+ padding: 20px 30px;
+
+ opacity: .0;
+}
+
+#voldown {
+  position: absolute;
+  top: 31%;
+  right: 43px;
+  padding: 25px 25px;
+  opacity: .0;
+}
+
+.voldown button {
+ padding: 20px 30px;
+
+ opacity: .0;
+}
+
+
 .ekran {
   position: absolute;
   background-color: #c4dfd3;
