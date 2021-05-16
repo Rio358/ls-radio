@@ -3,13 +3,13 @@ local PlayerData                = {}
 
 Citizen.CreateThread(function()
   while ESX == nil do
-    TriggerEvent('baserp:getSharedObject', function(obj) ESX = obj end)
+    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     Citizen.Wait(0)
   end
 end)
 
-RegisterNetEvent('baserp:setJob')
-AddEventHandler('baserp:setJob', function(job)
+RegisterNetEvent('esx:setJob')
+AddEventHandler('esx:setJob', function(job)
   PlayerData.job = job
 end)
 
