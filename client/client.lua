@@ -5,7 +5,7 @@ Citizen.CreateThread(function()
   while ESX == nil do
     TriggerEvent('baserp:getSharedObject', function(obj) ESX = obj end)
     Citizen.Wait(0)
-	end
+  end
 end)
 
 RegisterNetEvent('baserp:setJob')
