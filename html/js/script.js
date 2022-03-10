@@ -32,8 +32,8 @@ $(function() {
         UpdateCursorPos();
     });
 
-    document.onkeyup = function (data) {
-        if (data.which == 27) { // Escape key
+    document.onkeyup = function(data) {
+        if (data.which == 8) { // Escape key backspace
             $.post('https://ls-radio/escape', JSON.stringify({}));
         }
     };

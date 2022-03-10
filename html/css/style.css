@@ -6,6 +6,7 @@ body {
     top: 0;
 }
 
+
 /*
 .radio {
  background-image: url("../img/radio.png");
@@ -23,80 +24,75 @@ body {
 }
 
 #radio {
-  width: 367px;
-  height: 795px;
-  right: 0;
-  bottom: 0;
-  position: fixed;
+    width: 367px;
+    height: 795px;
+    right: 0;
+    bottom: 0;
+    position: fixed;
 }
 
-
 #onoff {
-  position: absolute;
-  top: 32%;
-  right: 0;
-  padding: 40px 40px;
-  opacity: .0;
+    position: absolute;
+    top: 32%;
+    right: 0;
+    padding: 40px 40px;
+    opacity: .0;
 }
 
 .onoff button {
- padding: 40px 55px;
-
- opacity: .0;
+    padding: 40px 55px;
+    opacity: .0;
 }
 
 #volup {
-  position: absolute;
-  top: 31%;
-  right: 63px;
-  padding: 25px 25px;
-  opacity: .0;
+    position: absolute;
+    top: 31%;
+    right: 63px;
+    padding: 25px 25px;
+    opacity: .0;
 }
 
 .volup button {
- padding: 20px 30px;
-
- opacity: .0;
+    padding: 20px 30px;
+    opacity: .0;
 }
 
 #voldown {
-  position: absolute;
-  top: 31%;
-  right: 43px;
-  padding: 25px 25px;
-  opacity: .0;
+    position: absolute;
+    top: 31%;
+    right: 43px;
+    padding: 25px 25px;
+    opacity: .0;
 }
 
 .voldown button {
- padding: 20px 30px;
-
- opacity: .0;
+    padding: 20px 30px;
+    opacity: .0;
 }
 
-
 .ekran {
-  position: absolute;
-  background-color: #c4dfd3;
-  padding: 95px 100px;
-  top: 71%;
-  left: 22.5%;
+    position: absolute;
+    background-color: #c4dfd3;
+    padding: 95px 100px;
+    top: 71%;
+    left: 22.5%;
 }
 
 .channel {
-  position: absolute;
-  top: 0%;
-  left: 0%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
 }
 
 .channel span {
-  text-align: center;
+    text-align: center;
 }
 
 .channel input {
-  text-align: center;
-  border: none;
-  border-bottom: 2px solid black;
-  background-color: #c4dfd3;
-  padding: 25px 30px;
-  font-size: 34px;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: #c4dfd3;
+    padding: 25px 30px;
+    font-size: 34px;
 }
