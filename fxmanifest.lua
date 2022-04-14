@@ -23,6 +23,11 @@ files{
     'html/img/radio.png'
 }
 
+dependencies{
+    'es_extended',
+    'ox_inventory'
+}
+
 exports {
 	"setRadioDisabled"
 }

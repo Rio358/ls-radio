@@ -1,10 +1,13 @@
 local PlayerData = {}
 local plyState = LocalPlayer.state
 local radioMenu = false
+local Inventory = exports.ox_inventory
+local Notify = exports.mythic_notify
+
 function enableRadio(enable)
 	SetNuiFocus(true, true)
 	SetNuiFocusKeepInput(true)
-	exports.ox_inventory:weaponWheel(true)
+	Inventory:weaponWheel(true)
 	radioMenu = enable
 	
 	SendNUIMessage({
@@ -18,7 +21,7 @@ RegisterNUICallback('volup', function(data, cb)
 	local newvol = volume + 10
 	if volume < 90 then
 		exports["pma-voice"]:setRadioVolume(newvol)
-		exports.mythic_notify:SendAlert('inform','Radio increased to ' .. newvol )
+		Notify:SendAlert('inform','Radio increased to ' .. newvol )
 	end
 	cb('ok')
 end)
@@ -28,7 +31,7 @@ RegisterNUICallback('voldown', function(data, cb)
 	local newvol = volume- 10
 	if volume > 10 then
 		exports["pma-voice"]:setRadioVolume(newvol)
-		exports.mythic_notify:SendAlert('inform','Radio decreased to ' .. newvol )
+		Notify:SendAlert('inform','Radio decreased to ' .. newvol )
 	end
 	cb('ok')
 end)
@@ -37,25 +40,24 @@ RegisterNUICallback('joinRadio', function(data, cb)
 	local _source = source
 	local PlayerData = ESX.GetPlayerData(_source)
 	local playerName = GetPlayerName(PlayerId())
-	
 	if tonumber(data.channel) then
 		if tonumber(data.channel) <= Config.RestrictedChannels then
 			if (PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' or PlayerData.job.name == 'fire') then
 				exports["pma-voice"]:setVoiceProperty("radioEnabled", true)
 				exports["pma-voice"]:setRadioChannel(tonumber(data.channel))
-				exports['mythic_notify']:SendAlert('inform', Config.messages['joined_to_radio'] .. data.channel .. ' MHz </b>')
+				Notify:SendAlert('inform', Config.messages['joined_to_radio'] .. data.channel .. ' MHz </b>')
 			elseif not (PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' or PlayerData.job.name == 'fire') then
-				exports['mythic_notify']:SendAlert('error', Config.messages['restricted_channel_error'])
+				Notify:SendAlert('error', Config.messages['restricted_channel_error'])
 			end
 		end
 		if tonumber(data.channel) > Config.RestrictedChannels then
 			exports["pma-voice"]:setVoiceProperty("radioEnabled", true)
 			exports["pma-voice"]:setRadioChannel(tonumber(data.channel))
 			print('success?' .. tonumber(data.channel))
-			exports['mythic_notify']:SendAlert('inform', Config.messages['joined_to_radio'] .. data.channel .. ' MHz </b>')
+			Notify:SendAlert('inform', Config.messages['joined_to_radio'] .. data.channel .. ' MHz </b>')
 		end
 	else
-		exports['mythic_notify']:SendAlert('error', Config.messages['you_on_radio'] .. data.channel .. ' MHz </b>')
+		Notify:SendAlert('error', Config.messages['you_on_radio'] .. data.channel .. ' MHz </b>')
 	end
 	cb('ok')
 end)
@@ -64,7 +66,7 @@ end)
 RegisterNUICallback('leaveRadio', function(data, cb)
 	exports["pma-voice"]:setRadioChannel(0)
 	exports["pma-voice"]:setVoiceProperty("radioEnabled", false)
-	exports['mythic_notify']:SendAlert('inform', Config.messages['you_leave'])
+	Notify:SendAlert('inform', Config.messages['you_leave'])
 	cb('ok')
 end)
 
@@ -73,7 +75,7 @@ RegisterNUICallback('escape', function(data, cb)
 	SetNuiFocus(false, false)
 	SetNuiFocusKeepInput(false)
 	RadioDisable()
-	exports.ox_inventory:weaponWheel(false)
+	Inventory:weaponWheel(false)
 	cb('ok')
 end)
 
@@ -81,7 +83,7 @@ RegisterCommand('radiostuck', function()
 	enableRadio(false)
 	SetNuiFocusKeepInput(false)
 	SetNuiFocus(false, false)
-	exports.ox_inventory:weaponWheel(false)
+	Inventory:weaponWheel(false)
 	RadioDisable()
 end)
 CreateThread(function()
@@ -99,9 +101,8 @@ AddEventHandler('ls-radio:onRadioDrop', function(source)
 	local playerName = GetPlayerName(source)
 	exports["pma-voice"]:setRadioChannel(0)
 	exports["pma-voice"]:setVoiceProperty("radioEnabled", false)
-	exports['mythic_notify']:SendAlert('inform', Config.messages['you_leave'])
+	Notify:SendAlert('inform', Config.messages['you_leave'])
 end)
-
 
 function setRadioDisabled()
 	TriggerEvent('ls-radio:onRadioDrop')
@@ -169,6 +170,7 @@ CreateThread(function()
 				SendNUIMessage({
 					type = "click"
 				})
+				Wait(500)
 				PlaySoundFromEntity( -1, "Beep_Green", PlayerPedId(), "DLC_HEIST_HACKING_SNAKE_SOUNDS", true,0)
 			end
 		end
