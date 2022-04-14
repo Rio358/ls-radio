@@ -4,6 +4,7 @@ local radioMenu = false
 function enableRadio(enable)
 	SetNuiFocus(true, true)
 	SetNuiFocusKeepInput(true)
+	exports.ox_inventory:weaponWheel(true)
 	radioMenu = enable
 	
 	SendNUIMessage({
@@ -72,6 +73,7 @@ RegisterNUICallback('escape', function(data, cb)
 	SetNuiFocus(false, false)
 	SetNuiFocusKeepInput(false)
 	RadioDisable()
+	exports.ox_inventory:weaponWheel(false)
 	cb('ok')
 end)
 
@@ -79,6 +81,7 @@ RegisterCommand('radiostuck', function()
 	enableRadio(false)
 	SetNuiFocusKeepInput(false)
 	SetNuiFocus(false, false)
+	exports.ox_inventory:weaponWheel(false)
 	RadioDisable()
 end)
 CreateThread(function()
@@ -166,6 +169,7 @@ CreateThread(function()
 				SendNUIMessage({
 					type = "click"
 				})
+				PlaySoundFromEntity( -1, "Beep_Green", PlayerPedId(), "DLC_HEIST_HACKING_SNAKE_SOUNDS", true,0)
 			end
 		end
 		Wait(0)
